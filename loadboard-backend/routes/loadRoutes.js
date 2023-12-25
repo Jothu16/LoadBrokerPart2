@@ -1,5 +1,8 @@
 const express = require('express');
 const Load = require('../models/Load'); // Adjust the path as necessary
+const { fetchLoadsFromExternalSources } = require('../services/externalAPIs'); // Adjust the path as necessary
+const { calculateProfitability } = require('../services/routeCalculation'); // Adjust the path as necessary
+
 const router = express.Router();
 
 // Create a new load
@@ -70,5 +73,33 @@ async function getLoad(req, res, next) {
     res.load = load;
     next();
 }
+
+// Route to fetch loads from external sources
+router.get('/external', async (req, res) => {
+    const { origin, destination } = req.query;
+    try {
+        const loads = await fetchLoadsFromExternalSources(origin, destination);
+        res.json(loads);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+});
+
+router.get('/enhanced', (req, res) => {
+    // Fetch loads (either from database or external sources)
+    // For demonstration, let's assume we have an array of loads
+    const loads = [
+        // ... load data ...
+    ];
+
+    const enhancedLoads = loads.map(load => {
+        return {
+            ...load,
+            profitability: calculateProfitability(load),
+        };
+    });
+
+    res.json(enhancedLoads);
+});
 
 module.exports = router;
