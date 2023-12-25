@@ -1,44 +1,65 @@
 import React, { useState } from 'react';
+import { registerUser } from '../services/api';
 
 const RegisterForm = () => {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [email, setEmail] = useState('');
+    const [userData, setUserData] = useState({
+        username: '',
+        password: '',
+        role: 'Carrier', // Default role, adjust as needed
+    });
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    // Handle registration logic here
-  };
+    const handleChange = (e) => {
+        setUserData({ ...userData, [e.target.name]: e.target.value });
+    };
 
-  return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <label>Email:</label>
-        <input 
-          type="email" 
-          value={email} 
-          onChange={(e) => setEmail(e.target.value)}
-        />
-      </div>
-      <div>
-        <label>Username:</label>
-        <input 
-          type="text" 
-          value={username} 
-          onChange={(e) => setUsername(e.target.value)}
-        />
-      </div>
-      <div>
-        <label>Password:</label>
-        <input 
-          type="password" 
-          value={password} 
-          onChange={(e) => setPassword(e.target.value)}
-        />
-      </div>
-      <button type="submit">Register</button>
-    </form>
-  );
-}
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            const response = await registerUser(userData);
+            console.log('Registration successful', response);
+            // Redirect or update UI upon successful registration
+        } catch (error) {
+            console.error('Registration failed', error);
+        }
+    };
+
+    return (
+        <form onSubmit={handleSubmit}>
+            <div>
+                <label>Username:</label>
+                <input 
+                    type="text" 
+                    name="username" 
+                    value={userData.username} 
+                    onChange={handleChange} 
+                />
+            </div>
+            <div>
+                <label>Password:</label>
+                <input 
+                    type="password" 
+                    name="password" 
+                    value={userData.password} 
+                    onChange={handleChange} 
+                />
+            </div>
+            <div>
+                <label>Role:</label>
+                <select 
+                    name="role" 
+                    value={userData.role} 
+                    onChange={handleChange}
+                >
+                    <option value="Carrier">Carrier</option>
+                    <option value="OtherRole1">OtherRole1</option>
+                    <option value="OtherRole2">OtherRole2</option>
+                    {/* Add other roles as needed */}
+                </select>
+            </div>
+            <button type="submit">Register</button>
+        </form>
+    );
+};
 
 export default RegisterForm;
+

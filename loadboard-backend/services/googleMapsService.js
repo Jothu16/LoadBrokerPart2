@@ -2,7 +2,7 @@
 const fetch = require('node-fetch');
 
 async function getTrafficData(origin, destination) {
-    const apiKey = process.env.[API KEY GOOGLE MAPS];
+    const apiKey = process.env.[API_KEY_GOOGLE_MAPS];
     const url = `https://maps.googleapis.com/maps/api/directions/json?origin=${origin}&destination=${destination}&key=${apiKey}&departure_time=now&traffic_model=best_guess`;
 
     try {
