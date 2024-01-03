@@ -21,13 +21,13 @@
   margin-bottom: 15px;
 }
 
-.loads-list {
+.loads-list, .dashboard-widget select {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Responsive grid */
   gap: 20px;
 }
 
-.load-item {
+.load-item, .dashboard-widget select {
   background-color: #fff;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -36,7 +36,7 @@
   text-align: left;
 }
 
-.load-item p {
+.load-item p, .dashboard-widget select {
   margin: 5px 0;
   color: #333;
 }
@@ -56,13 +56,13 @@
   background-color: #0055aa;
 }
 
-/* Additional styles for detailed load information */
-.load-item-details {
-  background-color: #f9f9f9;
-  padding: 10px;
-  margin-top: 10px;
+/* Additional styles for dropdown menus */
+.dashboard-widget select {
+  padding: 8px;
   border-radius: 4px;
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+  border: 1px solid #ccc;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 /* Style for charts or graphs (if applicable) */
@@ -71,18 +71,9 @@
   height: 250px; /* Adjust as needed */
 }
 
-/* Style for search bar */
-.search-bar {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 20px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-}
-
 /* Responsive adjustments */
 @media (max-width: 768px) {
-  .loads-list {
+  .loads-list, .dashboard-widget select {
     grid-template-columns: 1fr; /* Single column on smaller screens */
   }
 }
