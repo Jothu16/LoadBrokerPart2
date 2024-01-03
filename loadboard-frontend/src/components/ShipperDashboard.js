@@ -1,26 +1,33 @@
 import React, { useState } from 'react';
+import './ShipperDashboard.css'; // Import the CSS file
+
 
 const ShipperDashboard = () => {
-  // Sample state for shipments, replace with real data from your backend
   const [shipments, setShipments] = useState([
-    { id: 1, description: 'Shipment 1', ... },
-    { id: 2, description: 'Shipment 2', ... },
+    { id: 1, description: 'Shipment 1' },
+    { id: 2, description: 'Shipment 2' }
     // ... other shipments
   ]);
 
   // Function to add a new shipment
   const addShipment = () => {
     // Logic to add a new shipment
+    // This could open a modal or a new form
   };
 
   // Function to edit a shipment
   const editShipment = (shipmentId) => {
     // Logic to edit a shipment
+    // This could open a modal with the shipment's details for editing
   };
 
   // Function to delete a shipment
   const deleteShipment = (shipmentId) => {
     // Logic to delete a shipment
+    // Confirm before deleting
+    if (window.confirm(`Are you sure you want to delete shipment ${shipmentId}?`)) {
+      setShipments(shipments.filter(shipment => shipment.id !== shipmentId));
+    }
   };
 
   return (

@@ -3,8 +3,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import CarrierDashboard from './components/CarrierDashboard'; // Import CarrierDashboard
-import Broker from './components/Broker';
-import Shipper from './components/Shipper';
+import Broker from './components/BrokerDashboard';
+import Shipper from './components/ShipperDashboard';
 import LandingPage from './components/LandingPage';
 import ProtectedRoute from './components/ProtectedRoute';
 import LoginForm from './components/LoginForm';
