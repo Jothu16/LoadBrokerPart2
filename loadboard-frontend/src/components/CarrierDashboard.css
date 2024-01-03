@@ -2,11 +2,56 @@
 
 .carrier-dashboard {
   padding: 20px;
+  background-color: #f4f4f4; /* Light background for the dashboard */
+  min-height: 100vh; /* Full height */
 }
 
 .dashboard-widget {
+  background-color: white;
   border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  margin: 20px 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: left;
+}
+
+.dashboard-widget h3 {
+  color: #004d99; /* Dark blue for headings */
+  margin-bottom: 15px;
+}
+
+/* Grid layout for widgets */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Responsive grid */
+  gap: 20px;
+}
+
+/* Style for charts or graphs (if applicable) */
+.chart-container {
+  width: 100%;
+  height: 250px; /* Adjust as needed */
+}
+
+/* Style for lists or tables */
+.list-container {
+  width: 100%;
+  /* Additional styling for lists/tables */
+}
+
+/* Style for search bar */
+.search-bar {
+  width: 100%;
   padding: 10px;
-  margin: 10px 0;
-  text-align: center;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr; /* Single column on smaller screens */
+  }
 }
