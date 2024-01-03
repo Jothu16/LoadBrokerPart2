@@ -1,19 +1,10 @@
 import React from 'react';
-import { Route, Navigate } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 
-const ProtectedRoute = ({ component: Component, ...rest }) => {
-  // Replace this with your actual authentication logic
-  const isAuthenticated = false; // Replace with real authentication check
+const ProtectedRoute = ({ children }) => {
+  const isAuthenticated = true; // Temporarily set to true for testing
 
-  return (
-    <Route
-      {...rest}
-      element={(props) =>
-        isAuthenticated ? <Component {...props} /> : <Navigate to="/login" />
-      }
-    />
-  );
+  return isAuthenticated ? children : <Navigate to="/login" />;
 };
 
 export default ProtectedRoute;
-

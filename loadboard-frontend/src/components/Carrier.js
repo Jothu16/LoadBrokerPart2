@@ -1,27 +1,31 @@
+// Carrier.js
+
 import React, { useState } from 'react';
+import './Carrier.css'; // Assuming you have a separate CSS file for styling
 
 const Carrier = () => {
   const [loads, setLoads] = useState([
-    // Sample data. Replace with real data from your backend.
     { id: 1, description: 'Load 1 Description' },
     { id: 2, description: 'Load 2 Description' }
-    // Add more loads as needed
+    // ... more loads
   ]);
 
   const bookLoad = (loadId) => {
     console.log(`Booking load with ID: ${loadId}`);
-    // Implement the booking logic here
+    // Implement booking logic here
   };
 
   return (
-    <div>
+    <div className="carrier">
       <h1>Available Loads</h1>
-      {loads.map(load => (
-        <div key={load.id}>
-          <p>{load.description}</p>
-          <button onClick={() => bookLoad(load.id)}>Book Load</button>
-        </div>
-      ))}
+      <div className="load-list">
+        {loads.map(load => (
+          <div className="load-item" key={load.id}>
+            <p>{load.description}</p>
+            <button onClick={() => bookLoad(load.id)}>Book Load</button>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
