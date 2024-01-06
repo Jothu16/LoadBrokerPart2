@@ -1,12 +1,9 @@
 import React, { useState } from 'react';
 import './ShipperDashboard.css'; // Import the CSS file
 
-
 const ShipperDashboard = () => {
   const [shipments, setShipments] = useState([
-    { id: 1, description: 'Shipment 1' },
-    { id: 2, description: 'Shipment 2' }
-    // ... other shipments
+    // ... existing shipments ...
   ]);
 
   // Function to add a new shipment
@@ -30,10 +27,17 @@ const ShipperDashboard = () => {
     }
   };
 
+  // Function to get estimated rates for lanes
+  const getEstimatedRates = () => {
+    // Logic to fetch estimated rates based on shipper's location/company
+    // This could display a list or a chart with rate estimates
+  };
+
   return (
     <div className="shipper-dashboard">
       <h2>Shipper Dashboard</h2>
       <button onClick={addShipment}>Create New Shipment</button>
+      <button onClick={getEstimatedRates}>Get Estimated Rates</button>
       <div className="shipments-list">
         {shipments.map(shipment => (
           <div key={shipment.id} className="shipment-item">
